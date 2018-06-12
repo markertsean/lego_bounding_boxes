@@ -17,7 +17,7 @@ from chainercv.links import FasterRCNNVGG16
 from chainercv.links.model.faster_rcnn import FasterRCNNTrainChain
 from chainercv import transforms
 
-import custom_train_function as ctf
+import custom_train_functions as ctf
 
 
 class Transform(object):
@@ -72,7 +72,7 @@ def main():
 #
     # Sean's lego data
     inp_data = ctf.get_seans_data()
-    img_bb_label = read_pass_data( inp_data )
+    img_bb_label = ctf.read_pass_data( inp_data )
     
     frac_train = 0.8
     n_train    = int( frac_train * len(inp_data) )

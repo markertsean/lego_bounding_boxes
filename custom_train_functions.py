@@ -3,15 +3,18 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 _inp_file = 'mod_output_info.txt'
+_max_runs = 10
+
 
 def get_seans_data():
     
+    print 'Reading ' + _inp_file
     data = []
     with open( _inp_file, 'r' ) as f:
         for row in f:
             data.append( row.split(',') )
             
-    
+    print 'Done'
     return data
 
 
@@ -23,7 +26,7 @@ def read_pass_data( inp_data ):
 
     print len(inp_data)
     
-    for i in range( 0, len(inp_data) ):
+    for i in range( 0, _max_runs ):#len(inp_data) ):
     
         # Get the image
         img = Image.open( inp_data[i][0] )
