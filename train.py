@@ -17,6 +17,8 @@ from chainercv.links import FasterRCNNVGG16
 from chainercv.links.model.faster_rcnn import FasterRCNNTrainChain
 from chainercv import transforms
 
+import custom_train_function as ctf
+
 
 class Transform(object):
 
@@ -68,7 +70,14 @@ def main():
 #    test_data = VOCBboxDataset(split='test', year='2007',
 #                               use_difficult=True, return_difficult=True)
 #
-    train_data = 'mod_output_info.txt'
+    # Sean's lego data
+    inp_data = ctf.get_seans_data()
+    img_bb_label = read_pass_data( inp_data )
+    
+    frac_train = 0.8
+    n_train    = int( frac_train * len(inp_data) )
+    train_data = img_bb_label[:n_train]
+    test_data  = img_bb_label[n_train:]
     
 #    print test_data
 #    sys.exit()
