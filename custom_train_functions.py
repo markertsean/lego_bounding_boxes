@@ -29,13 +29,16 @@ def read_pass_data( inp_data ):
     for i in range( 0, _max_runs ):#len(inp_data) ):
     
         # Get the image
-        img = Image.open( inp_data[i][0] )
+        img = Image.open( inp_data[i][0] ) # Use this?
+#        img = inp_data[i][0]
 
         # Get the tuple
         tup = inp_data[i][1][1:].strip('(').strip(')')
         tup = tup.split(' ')
         tup_list.append( ( int(tup[0]), int(tup[1]), int(tup[2]), int(tup[3]) ) )
+#        tup_list.append( [ int(tup[0]), int(tup[1]), int(tup[2]), int(tup[3]) ] )
     
-        ret_list.append( (img.copy(),tup_list[-1],'lego') )
+#        ret_list.append( (img.copy(),tup_list[-1],'lego') )
+        ret_list.append( [img.copy(),tup_list[-1],['lego']] )
 
     return ret_list
